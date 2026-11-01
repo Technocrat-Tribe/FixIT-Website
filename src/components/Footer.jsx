@@ -126,7 +126,7 @@ export function Footer() {
             — Senior Product Manager & AI Solutions Architect.
           </p>
           <p className="text-ink-muted">
-            © {new Date().getFullYear()} Fixit. Early product: payments and identity checks are simulated.
+            © {new Date().getFullYear()} FixIT. Proprietary Commercial IP under Technocrat-Tribe. All rights reserved.
           </p>
         </div>
       </div>
