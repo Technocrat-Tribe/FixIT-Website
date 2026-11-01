@@ -16,7 +16,7 @@ import {
   Coins,
   BadgeCheck,
 } from 'lucide-react';
-import { AudienceArt, ReviewVsReport, VerifyArt } from './Illustrations';
+import { AudienceArt, ReviewVsReport } from './Illustrations';
 
 export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
   const [activeTab, setActiveTab] = useState('companies');
@@ -46,7 +46,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
   ];
 
   return (
-    <section id="personas" className="py-20 bg-slate-50 border-b border-border">
+    <section id="personas" className="py-20 bg-canvas border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -58,13 +58,13 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
             One platform. Designed for all three sides of engineering.
           </h2>
           <p className="mt-4 text-lg text-ink-muted">
-            FixIT aligns incentives between companies who need verified code, engineers seeking merit-based rewards, and users who want software that just works.
+            Fixit aligns incentives between companies who need verified code, engineers seeking merit-based rewards, and users who want software that just works.
           </p>
         </div>
 
         {/* Tab Switcher Buttons */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex rounded-2xl bg-white p-1.5 shadow-sm border border-border">
+          <div className="inline-flex rounded-2xl bg-surface p-1.5 shadow-sm border border-border">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -75,7 +75,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
                   className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all ${
                     isActive
                       ? 'bg-brand text-white shadow-sm ring-2 ring-brand/20'
-                      : 'text-ink-muted hover:text-ink hover:bg-slate-100'
+                      : 'text-ink-muted hover:text-ink hover:bg-surface-muted'
                   }`}
                 >
                   <Icon size={17} />
@@ -88,7 +88,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
 
         {/* Tab Content 1: FOR COMPANIES */}
         {activeTab === 'companies' && (
-          <div className="grid items-center gap-10 rounded-3xl border border-border bg-white p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
+          <div className="grid items-center gap-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
             <div>
               <div className="inline-flex items-center gap-2 rounded-lg bg-info-soft px-3 py-1 text-xs font-bold text-info mb-4">
                 <BarChart3 size={14} />
@@ -98,11 +98,11 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
                 Hear users clearly. Fix what matters first.
               </h3>
               <p className="mt-3 text-base sm:text-lg text-ink-muted">
-                Your users are already encountering friction. FixIT groups identical issues, computes a mathematical priority score, and lets you fund fixes only when you’re ready.
+                Your users are already encountering friction. Fixit groups identical issues, computes a mathematical priority score, and lets you fund fixes only when you’re ready.
               </p>
 
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-border bg-slate-50 p-4">
+                <div className="rounded-2xl border border-border bg-surface-muted p-4">
                   <div className="flex items-center gap-2 text-brand font-bold text-sm">
                     <Sparkles size={16} />
                     <span>Automated Deduplication</span>
@@ -112,17 +112,17 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-slate-50 p-4">
+                <div className="rounded-2xl border border-border bg-surface-muted p-4">
                   <div className="flex items-center gap-2 text-ok font-bold text-sm">
                     <Target size={16} />
                     <span>Priority Score Formula</span>
                   </div>
                   <p className="mt-1.5 text-xs text-ink-muted leading-relaxed">
-                    Ranked objectively by <code className="bg-white px-1 py-0.5 rounded border border-border font-mono text-[11px]">(Impact × Urgency) / Effort</code>.
+                    Ranked objectively by <code className="bg-surface px-1 py-0.5 rounded border border-border font-mono text-[11px] text-ink">(Impact × Urgency) / Effort</code>.
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-slate-50 p-4">
+                <div className="rounded-2xl border border-border bg-surface-muted p-4">
                   <div className="flex items-center gap-2 text-info font-bold text-sm">
                     <Coins size={16} />
                     <span>Pay Only For Verified Fixes</span>
@@ -132,7 +132,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-slate-50 p-4">
+                <div className="rounded-2xl border border-border bg-surface-muted p-4">
                   <div className="flex items-center gap-2 text-warn font-bold text-sm">
                     <GitPullRequest size={16} />
                     <span>1-Click Linear & GitHub Sync</span>
@@ -146,14 +146,14 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#sandbox"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-strong transition shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-strong px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition shadow-sm"
                 >
                   <span>Simulate Acme Cloud Triage</span>
                   <ArrowRight size={16} />
                 </a>
                 <button
                   onClick={onOpenPilotModal}
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-semibold text-ink hover:bg-slate-100 transition"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-ink hover:bg-surface-muted transition"
                 >
                   <span>Claim Company Page</span>
                 </button>
@@ -161,7 +161,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
             </div>
 
             <div className="flex flex-col items-center justify-center p-4">
-              <div className="w-full max-w-sm rounded-2xl border border-border bg-slate-50 p-6 shadow-inner">
+              <div className="w-full max-w-sm rounded-2xl border border-border bg-surface-muted p-6">
                 <AudienceArt who="companies" />
                 <div className="mt-4 pt-4 border-t border-border text-xs text-ink-muted text-center">
                   <b>Verification:</b> Verify via company work email domain or a one-line DNS TXT record.
@@ -173,14 +173,14 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
 
         {/* Tab Content 2: FOR ENGINEERS & SOLVERS */}
         {activeTab === 'engineers' && (
-          <div className="grid items-center gap-10 rounded-3xl border border-border bg-white p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
+          <div className="grid items-center gap-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
             <div>
               <div className="inline-flex items-center gap-2 rounded-lg bg-ok-soft px-3 py-1 text-xs font-bold text-ok mb-4">
                 <BadgeCheck size={14} />
                 <span>Zero Upwork Bidding Chaos · Pure Meritocracy</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink">
-                How engineers earn with FixIT
+                How engineers earn with Fixit
               </h3>
               <p className="mt-3 text-base sm:text-lg text-ink-muted">
                 No bidding wars, no unpaid discovery calls, and no agency overhead. Browse real problems, claim the bounty exclusively for 7 days, submit your fix, and get paid 75% of the escrow bounty.
@@ -225,19 +225,19 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
               </div>
 
               {/* Reputation levels badge strip */}
-              <div className="mt-6 p-4 rounded-2xl bg-slate-50 border border-border">
+              <div className="mt-6 p-4 rounded-2xl bg-surface-muted border border-border">
                 <p className="text-xs font-bold text-ink mb-2">Reputation Progression Ladders:</p>
                 <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
-                  <span className="rounded-lg bg-white border border-border px-2.5 py-1 text-slate-700">
+                  <span className="rounded-lg bg-surface border border-border px-2.5 py-1 text-ink">
                     Reporter (0-69 pts)
                   </span>
-                  <span className="rounded-lg bg-white border border-border px-2.5 py-1 text-indigo-700">
+                  <span className="rounded-lg bg-surface border border-border px-2.5 py-1 text-brand">
                     Verified Hunter (70-89 pts)
                   </span>
                   <span className="rounded-lg bg-brand-soft border border-brand/30 px-2.5 py-1 text-brand font-bold">
                     Expert Solver (90-119 pts)
                   </span>
-                  <span className="rounded-lg bg-amber-50 border border-amber-200 px-2.5 py-1 text-amber-800 font-bold">
+                  <span className="rounded-lg bg-warn-soft border border-warn/30 px-2.5 py-1 text-warn font-bold">
                     Fixit Fellow (120+ pts)
                   </span>
                 </div>
@@ -246,14 +246,14 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
                   onClick={onOpenSolverModal}
-                  className="inline-flex items-center gap-2 rounded-xl bg-ok px-5 py-2.5 text-sm font-semibold text-white hover:bg-ok-strong transition shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-ok px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-emerald-400 transition shadow-sm"
                 >
                   <span>Apply for Solver Early Access</span>
                   <ArrowRight size={16} />
                 </button>
                 <a
                   href="#calculator"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-semibold text-ink hover:bg-slate-100 transition"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-ink hover:bg-surface-muted transition"
                 >
                   <span>Calculate Solver Payout</span>
                 </a>
@@ -261,7 +261,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
             </div>
 
             <div className="flex flex-col items-center justify-center p-4">
-              <div className="w-full max-w-sm rounded-2xl border border-border bg-slate-50 p-6 shadow-inner">
+              <div className="w-full max-w-sm rounded-2xl border border-border bg-surface-muted p-6">
                 <AudienceArt who="engineers" />
                 <div className="mt-4 pt-4 border-t border-border text-xs text-ink-muted text-center">
                   <b>Solver Guarantee:</b> Bounties are funded in escrow <i>before</i> you write code.
@@ -273,7 +273,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
 
         {/* Tab Content 3: FOR EVERYDAY REPORTERS */}
         {activeTab === 'reporters' && (
-          <div className="grid items-center gap-10 rounded-3xl border border-border bg-white p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
+          <div className="grid items-center gap-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] shadow-card">
             <div>
               <div className="inline-flex items-center gap-2 rounded-lg bg-warn-soft px-3 py-1 text-xs font-bold text-warn mb-4">
                 <Coins size={14} />
@@ -283,7 +283,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
                 Venting feels good. Getting it fixed feels better.
               </h3>
               <p className="mt-3 text-base sm:text-lg text-ink-muted">
-                Instead of shouting into an app store review black hole, report the issue once through FixIT. If a company funds a bounty and an engineer fixes it, you receive 10% of the entire bounty payout.
+                Instead of shouting into an app store review black hole, report the issue once through Fixit. If a company funds a bounty and an engineer fixes it, you receive 10% of the entire bounty payout.
               </p>
 
               {/* Before vs After comparison cards */}
@@ -309,7 +309,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
 
                 <div className="rounded-2xl border border-ok/40 bg-ok-soft/30 p-4">
                   <ReviewVsReport kind="report" />
-                  <h4 className="mt-3 font-bold text-sm text-ok">Structured FixIT Report</h4>
+                  <h4 className="mt-3 font-bold text-sm text-ok">Structured Fixit Report</h4>
                   <ul className="mt-2 space-y-1.5 text-xs text-ink-muted">
                     <li className="flex items-center gap-1.5">
                       <Check size={14} className="text-ok shrink-0" />
@@ -330,7 +330,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#sandbox"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-strong transition shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-strong px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition shadow-sm"
                 >
                   <span>Inspect Seeded User Reports</span>
                   <ArrowRight size={16} />
@@ -339,7 +339,7 @@ export function PersonaTabs({ onOpenPilotModal, onOpenSolverModal }) {
             </div>
 
             <div className="flex flex-col items-center justify-center p-4">
-              <div className="w-full max-w-sm rounded-2xl border border-border bg-slate-50 p-6 shadow-inner">
+              <div className="w-full max-w-sm rounded-2xl border border-border bg-surface-muted p-6">
                 <AudienceArt who="users" />
                 <div className="mt-4 pt-4 border-t border-border text-xs text-ink-muted text-center">
                   <b>Finder's Reward:</b> Even if 10 others report the same bug, the <i>first</i> reporter gets the 10% fee!

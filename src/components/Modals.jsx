@@ -22,8 +22,8 @@ export function DeduplicationModal({ bug, isOpen, onClose }) {
   if (!isOpen || !bug) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-2xl rounded-3xl bg-surface p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-start justify-between pb-4 border-b border-border">
           <div className="pr-6">
@@ -38,7 +38,7 @@ export function DeduplicationModal({ bug, isOpen, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-2 text-ink-muted hover:bg-slate-100 transition"
+            className="rounded-xl p-2 text-ink-muted hover:bg-surface-muted transition"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -46,15 +46,15 @@ export function DeduplicationModal({ bug, isOpen, onClose }) {
         </div>
 
         {/* Canonical Master Report */}
-        <div className="my-5 rounded-2xl bg-indigo-50/70 border border-indigo-100 p-4">
+        <div className="my-5 rounded-2xl bg-brand-soft/60 border border-brand/20 p-4">
           <div className="flex items-center justify-between text-xs font-bold text-brand mb-1">
             <span>Primary Canonical Report (1st Filed)</span>
             <span>Finder's Fee: ${bug.reporterFee} (10%)</span>
           </div>
           <p className="text-sm font-semibold text-ink">{bug.summary}</p>
           <div className="mt-2.5 flex flex-wrap gap-2 text-xs text-ink-muted font-medium">
-            <span className="rounded bg-white px-2 py-0.5 border border-border">Reporter: <b>{bug.originalReporter}</b></span>
-            <span className="rounded bg-white px-2 py-0.5 border border-border">Environment: {bug.environment}</span>
+            <span className="rounded bg-surface px-2 py-0.5 border border-border">Reporter: <b>{bug.originalReporter}</b></span>
+            <span className="rounded bg-surface px-2 py-0.5 border border-border">Environment: {bug.environment}</span>
           </div>
         </div>
 
@@ -65,7 +65,7 @@ export function DeduplicationModal({ bug, isOpen, onClose }) {
           </h4>
 
           {bug.duplicates.map((dup) => (
-            <div key={dup.id} className="rounded-2xl border border-border bg-slate-50/80 p-4 transition hover:bg-slate-50">
+            <div key={dup.id} className="rounded-2xl border border-border bg-surface-muted p-4 transition hover:bg-surface">
               <div className="flex items-start justify-between gap-2">
                 <span className="text-sm font-bold text-ink">{dup.title}</span>
                 <span className="shrink-0 rounded-full bg-ok-soft border border-ok/20 px-2 py-0.5 text-[11px] font-black text-ok">
@@ -86,7 +86,7 @@ export function DeduplicationModal({ bug, isOpen, onClose }) {
           <span>AI Embedding Cosine Threshold: ≥ 0.85</span>
           <button
             onClick={onClose}
-            className="rounded-xl bg-brand px-4 py-2 font-bold text-white hover:bg-brand-strong transition"
+            className="rounded-xl bg-brand-strong px-4 py-2 font-bold text-white hover:opacity-90 transition"
           >
             Done Viewing
           </button>
@@ -135,8 +135,8 @@ ${bug.suggestedFix}
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-2xl rounded-3xl bg-surface p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between pb-4 border-b border-border">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full bg-ok-soft px-3 py-0.5 text-xs font-bold text-ok mb-2">
@@ -150,7 +150,7 @@ ${bug.suggestedFix}
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-2 text-ink-muted hover:bg-slate-100 transition"
+            className="rounded-xl p-2 text-ink-muted hover:bg-surface-muted transition"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -158,7 +158,7 @@ ${bug.suggestedFix}
         </div>
 
         {/* Code View */}
-        <div className="my-5 relative rounded-2xl bg-slate-900 p-4 text-slate-100 font-mono text-xs overflow-x-auto max-h-72 border border-slate-800">
+        <div className="my-5 relative rounded-2xl bg-canvas p-4 text-ink font-mono text-xs overflow-x-auto max-h-72 border border-border">
           <pre className="whitespace-pre-wrap">{markdownContent}</pre>
         </div>
 
@@ -172,8 +172,8 @@ ${bug.suggestedFix}
               onClick={handleCopy}
               className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition shadow-sm ${
                 copied
-                  ? 'bg-ok text-white'
-                  : 'bg-brand text-white hover:bg-brand-strong'
+                  ? 'bg-ok text-slate-950 font-black'
+                  : 'bg-brand-strong text-white hover:opacity-90'
               }`}
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -181,7 +181,7 @@ ${bug.suggestedFix}
             </button>
             <button
               onClick={onClose}
-              className="rounded-xl border border-border px-4 py-2.5 text-xs font-semibold text-ink hover:bg-slate-100 transition"
+              className="rounded-xl border border-border px-4 py-2.5 text-xs font-semibold text-ink hover:bg-surface-muted transition"
             >
               Close
             </button>
@@ -216,8 +216,8 @@ export function PilotModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-lg rounded-3xl bg-surface p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between pb-3 border-b border-border">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-0.5 text-xs font-bold text-brand mb-2">
@@ -231,7 +231,7 @@ export function PilotModal({ isOpen, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-2 text-ink-muted hover:bg-slate-100 transition"
+            className="rounded-xl p-2 text-ink-muted hover:bg-surface-muted transition"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -252,92 +252,109 @@ export function PilotModal({ isOpen, onClose }) {
                 setSubmitted(false);
                 onClose();
               }}
-              className="mt-6 rounded-xl bg-brand px-6 py-2.5 text-xs font-bold text-white hover:bg-brand-strong transition"
+              className="mt-6 rounded-xl bg-brand-strong px-5 py-2.5 text-xs font-bold text-white hover:opacity-90"
             >
-              Return to Showcase
+              Done
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-5 space-y-4">
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Company Name</label>
+              <label className="block text-xs font-bold text-ink mb-1">
+                Company or Product Name
+              </label>
               <input
-                required
                 type="text"
-                placeholder="e.g. Acme Technologies"
+                required
+                placeholder="e.g. Acme Corp, Vercel, Supabase"
                 value={formData.companyName}
-                onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                className="w-full rounded-xl border border-border px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                onChange={(e) =>
+                  setFormData({ ...formData, companyName: e.target.value })
+                }
+                className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none focus:ring-2 focus:ring-brand/30 placeholder:text-ink-muted"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Work Email</label>
+              <label className="block text-xs font-bold text-ink mb-1">
+                Work Email Address
+              </label>
               <input
-                required
                 type="email"
+                required
                 placeholder="you@company.com"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full rounded-xl border border-border px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none focus:ring-2 focus:ring-brand/30 placeholder:text-ink-muted"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-ink mb-1">Team Size</label>
+                <label className="block text-xs font-bold text-ink mb-1">
+                  Engineering Team Size
+                </label>
                 <select
                   value={formData.teamSize}
-                  onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                  className="w-full rounded-xl border border-border px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 bg-white"
+                  onChange={(e) =>
+                    setFormData({ ...formData, teamSize: e.target.value })
+                  }
+                  className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none"
                 >
-                  <option>1-10 engineers</option>
-                  <option>10-50 engineers</option>
-                  <option>50-250 engineers</option>
-                  <option>250+ enterprise</option>
+                  <option value="1-10">1 - 10 engineers</option>
+                  <option value="10-50">10 - 50 engineers</option>
+                  <option value="50-200">50 - 200 engineers</option>
+                  <option value="200+">200+ engineers</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-ink mb-1">Issue Tracker</label>
+                <label className="block text-xs font-bold text-ink mb-1">
+                  Primary Issue Tracker
+                </label>
                 <select
                   value={formData.tracker}
-                  onChange={(e) => setFormData({ ...formData, tracker: e.target.value })}
-                  className="w-full rounded-xl border border-border px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 bg-white"
+                  onChange={(e) =>
+                    setFormData({ ...formData, tracker: e.target.value })
+                  }
+                  className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none"
                 >
-                  <option>Linear</option>
-                  <option>GitHub Issues</option>
-                  <option>Jira Cloud</option>
-                  <option>GitLab / Other</option>
+                  <option value="Linear">Linear</option>
+                  <option value="GitHub">GitHub Issues</option>
+                  <option value="Jira">Jira Software</option>
+                  <option value="Notion">Notion / Other</option>
                 </select>
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Target Monthly Bounty Pool</label>
+              <label className="block text-xs font-bold text-ink mb-1">
+                Planned Monthly Bounty Pool (Optional)
+              </label>
               <select
                 value={formData.bountyBudget}
-                onChange={(e) => setFormData({ ...formData, bountyBudget: e.target.value })}
-                className="w-full rounded-xl border border-border px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 bg-white"
+                onChange={(e) =>
+                  setFormData({ ...formData, bountyBudget: e.target.value })
+                }
+                className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none"
               >
-                <option>&lt; $1,000 / mo</option>
-                <option>$1,000 - $5,000 / mo</option>
-                <option>$5,000 - $20,000 / mo</option>
-                <option>$20,000+ / mo</option>
+                <option value="$0 (Free Exploration)">$0 (Free Exploration)</option>
+                <option value="$500 - $1,000 / mo">$500 - $1,000 / mo</option>
+                <option value="$1,000 - $5,000 / mo">$1,000 - $5,000 / mo</option>
+                <option value="$5,000+ / mo">$5,000+ / mo</option>
               </select>
             </div>
 
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-brand py-3 text-sm font-bold text-white shadow-md hover:bg-brand-strong transition"
+                className="w-full rounded-xl bg-brand-strong py-3 text-xs font-bold text-white hover:opacity-90 transition shadow-sm flex items-center justify-center gap-2"
               >
-                <Send size={16} />
+                <Send size={14} />
                 <span>Submit Pilot Application</span>
               </button>
-              <p className="mt-2 text-center text-[11px] text-ink-muted">
-                Zero commitment. Prepaid escrow balance only funds when you accept fixes.
-              </p>
             </div>
           </form>
         )}
@@ -346,14 +363,13 @@ export function PilotModal({ isOpen, onClose }) {
   );
 }
 
-/** Modal for Solvers Applying for Early Access */
+/** Modal for Solver Early Access Application */
 export function SolverModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
     github: '',
-    techStack: 'TypeScript / React / Node.js',
     email: '',
+    techStack: 'TypeScript / React / Node.js',
   });
 
   if (!isOpen) return null;
@@ -369,22 +385,22 @@ export function SolverModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-lg rounded-3xl bg-surface p-6 sm:p-8 shadow-modal border border-border max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between pb-3 border-b border-border">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full bg-ok-soft px-3 py-0.5 text-xs font-bold text-ok mb-2">
               <Code size={13} />
-              <span>Solver Network</span>
+              <span>Solver & Hunter Portal</span>
             </div>
-            <h3 className="text-xl font-bold text-ink">Join FixIT Solver Network</h3>
+            <h3 className="text-xl font-bold text-ink">Apply for Solver Early Access</h3>
             <p className="text-xs text-ink-muted mt-0.5">
-              Solve real bugs for top startups, build your reputation, and earn 75% escrow payouts.
+              Solve real engineering bugs, claim 7-day exclusive holds, and earn 75% escrow payouts.
             </p>
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-2 text-ink-muted hover:bg-slate-100 transition"
+            className="rounded-xl p-2 text-ink-muted hover:bg-surface-muted transition"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -394,85 +410,85 @@ export function SolverModal({ isOpen, onClose }) {
         {submitted ? (
           <div className="py-8 text-center animate-fadeIn">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-ok-soft text-ok mb-4">
-              <ShieldCheck size={32} />
+              <Check size={32} />
             </div>
-            <h4 className="text-xl font-bold text-ink">Solver Access Registered!</h4>
+            <h4 className="text-xl font-bold text-ink">Application Registered!</h4>
             <p className="mt-2 text-sm text-ink-muted max-w-sm mx-auto">
-              Welcome, <b>{formData.name || 'Solver'}</b>! Your GitHub handle (<code>@{formData.github || 'solver'}</code>) has been pre-registered for the next bounty wave.
+              Your solver profile for <b>{formData.github || 'Developer'}</b> is queued for expedited review. Look for an invite link to the bounty board in your inbox.
             </p>
             <button
               onClick={() => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="mt-6 rounded-xl bg-ok px-6 py-2.5 text-xs font-bold text-white hover:bg-ok-strong transition"
+              className="mt-6 rounded-xl bg-brand-strong px-5 py-2.5 text-xs font-bold text-white hover:opacity-90"
             >
-              Return to Showcase
+              Done
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-5 space-y-4">
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Full Name</label>
-              <input
-                required
-                type="text"
-                placeholder="Alex Morgan"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full rounded-xl border border-border px-3.5 py-2.5 text-sm text-ink focus:border-ok focus:outline-none focus:ring-2 focus:ring-ok/20"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-ink mb-1">GitHub Username</label>
+              <label className="block text-xs font-bold text-ink mb-1">
+                GitHub Username or Profile URL
+              </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-ink-muted text-sm">@</span>
+                <Github size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted" />
                 <input
-                  required
                   type="text"
-                  placeholder="github_handle"
+                  required
+                  placeholder="github.com/username or @username"
                   value={formData.github}
-                  onChange={(e) => setFormData({ ...formData, github: e.target.value })}
-                  className="w-full pl-8 rounded-xl border border-border px-3.5 py-2.5 text-sm text-ink focus:border-ok focus:outline-none focus:ring-2 focus:ring-ok/20"
+                  onChange={(e) =>
+                    setFormData({ ...formData, github: e.target.value })
+                  }
+                  className="w-full pl-9 pr-3.5 py-2 text-xs rounded-xl border border-border bg-surface-muted text-ink focus:outline-none focus:ring-2 focus:ring-brand/30 placeholder:text-ink-muted"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Email</label>
-              <input
-                required
-                type="email"
-                placeholder="alex@domain.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full rounded-xl border border-border px-3.5 py-2.5 text-sm text-ink focus:border-ok focus:outline-none focus:ring-2 focus:ring-ok/20"
-              />
+              <label className="block text-xs font-bold text-ink mb-1">
+                Email Address
+              </label>
+              <div className="relative">
+                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted" />
+                <input
+                  type="email"
+                  required
+                  placeholder="developer@domain.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full pl-9 pr-3.5 py-2 text-xs rounded-xl border border-border bg-surface-muted text-ink focus:outline-none focus:ring-2 focus:ring-brand/30 placeholder:text-ink-muted"
+                />
+              </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-ink mb-1">Primary Tech Stack</label>
-              <select
+              <label className="block text-xs font-bold text-ink mb-1">
+                Primary Languages & Frameworks
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. TypeScript, Python, Go, Next.js, Rust"
                 value={formData.techStack}
-                onChange={(e) => setFormData({ ...formData, techStack: e.target.value })}
-                className="w-full rounded-xl border border-border px-3 py-2.5 text-sm text-ink focus:border-ok focus:outline-none focus:ring-2 focus:ring-ok/20 bg-white"
-              >
-                <option>TypeScript / React / Node.js</option>
-                <option>Python / Django / FastAPI</option>
-                <option>Go / Distributed Systems</option>
-                <option>Rust / Systems Engineering</option>
-                <option>Mobile (iOS / Android / Flutter)</option>
-              </select>
+                onChange={(e) =>
+                  setFormData({ ...formData, techStack: e.target.value })
+                }
+                className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2 text-xs text-ink focus:outline-none focus:ring-2 focus:ring-brand/30 placeholder:text-ink-muted"
+              />
             </div>
 
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-ok py-3 text-sm font-bold text-white shadow-md hover:bg-ok-strong transition"
+                className="w-full rounded-xl bg-ok py-3 text-xs font-bold text-slate-950 hover:bg-emerald-400 transition shadow-sm flex items-center justify-center gap-2"
               >
-                <Send size={16} />
-                <span>Join Early Solver Queue</span>
+                <Check size={14} />
+                <span>Join Bounty Board Waitlist</span>
               </button>
             </div>
           </form>

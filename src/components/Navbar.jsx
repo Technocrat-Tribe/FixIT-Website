@@ -1,74 +1,84 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowRight, Sparkles, Shield, Terminal } from 'lucide-react';
+import { Menu, X, Wrench, Search, Terminal } from 'lucide-react';
 
-export function Navbar({ onOpenPilotModal }) {
+export function Navbar({ onOpenPilotModal, onOpenSolverModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Personas', href: '#personas' },
-    { name: 'Surfaces', href: '#surfaces' },
-    { name: 'ROI Calculator', href: '#calculator' },
-    { name: 'Triage Sandbox', href: '#sandbox' },
+    { name: 'Report a bug', href: '#sandbox' },
+    { name: 'Explore', href: '#surfaces' },
+    { name: 'How it works', href: '#how-it-works' },
+    { name: 'For engineers', href: '#personas' },
+    { name: 'For companies', href: '#personas' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'Architecture', href: '#architecture' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/80 bg-surface/90 backdrop-blur-md transition-all">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-surface/90 backdrop-blur transition-all">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-4 sm:px-6 lg:px-8">
         {/* Brand */}
-        <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight text-ink hover:opacity-90 transition">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white shadow-sm ring-2 ring-brand/20">
-              🛠️
-            </span>
-            <span>FixIT</span>
-          </a>
-        </div>
+        <a href="#" className="mr-3 inline-flex min-h-11 items-center gap-2 text-lg font-bold text-ink hover:opacity-90 transition">
+          <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-brand to-info text-white shadow-sm">
+            <Wrench size={17} />
+          </span>
+          <span>Fixit</span>
+        </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav aria-label="Main" className="hidden lg:flex flex-1 items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-semibold text-ink-muted hover:text-brand transition-colors"
+              className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full px-3 text-[15px] font-medium text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Action CTAs */}
-        <div className="hidden sm:flex items-center gap-3">
-          <a
-            href="#sandbox"
-            className="inline-flex items-center gap-1.5 rounded-xl bg-surface-muted border border-border px-3.5 py-2 text-xs font-semibold text-ink hover:bg-slate-200 transition shadow-sm"
-          >
-            <Terminal size={14} className="text-brand" />
-            <span>Simulate Triage</span>
-          </a>
+        {/* Search Box Pill */}
+        <div className="hidden xl:flex items-center relative w-56 ml-auto">
+          <Search size={15} className="absolute left-3.5 text-ink-muted pointer-events-none" />
+          <input
+            type="text"
+            placeholder="Search"
+            onClick={() => {
+              const el = document.getElementById('sandbox');
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            readOnly
+            className="w-full rounded-full border border-border bg-surface-muted py-1.5 pl-9 pr-4 text-xs text-ink placeholder:text-ink-muted focus:outline-none cursor-pointer hover:border-brand/40"
+          />
+        </div>
 
+        {/* Right Auth / Pilot Buttons */}
+        <div className="hidden sm:flex items-center gap-2 ml-auto xl:ml-3">
+          <button
+            onClick={onOpenSolverModal}
+            className="inline-flex min-h-11 items-center rounded-full px-3.5 text-[15px] font-medium text-ink-muted hover:text-ink transition"
+          >
+            Log in
+          </button>
           <button
             onClick={onOpenPilotModal}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand-strong transition shadow-sm ring-2 ring-brand/20"
+            className="inline-flex min-h-11 items-center rounded-full bg-brand-strong px-5 text-[15px] font-semibold text-white hover:opacity-90 shadow-sm transition"
           >
-            <span>Request Pilot</span>
-            <ArrowRight size={14} />
+            Sign up
           </button>
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2 ml-auto">
           <button
             onClick={onOpenPilotModal}
-            className="rounded-lg bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-strong sm:hidden"
+            className="rounded-full bg-brand-strong px-4 py-1.5 text-xs font-semibold text-white hover:opacity-90 sm:hidden"
           >
-            Pilot
+            Sign up
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-lg p-2 text-ink-muted hover:bg-surface-muted focus:outline-none"
+            className="rounded-full p-2 text-ink-muted hover:bg-surface-muted focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -78,38 +88,38 @@ export function Navbar({ onOpenPilotModal }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-border bg-surface px-4 pb-6 pt-2 shadow-lg animate-fadeIn">
-          <div className="space-y-2">
+        <div className="lg:hidden border-t border-border bg-surface px-4 pb-6 pt-3 shadow-2xl animate-fadeIn">
+          <div className="space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-base font-semibold text-ink hover:bg-brand-soft hover:text-brand"
+                className="block rounded-xl px-3 py-2 text-base font-medium text-ink hover:bg-surface-muted"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="mt-5 pt-4 border-t border-border flex flex-col gap-2.5">
-            <a
-              href="#sandbox"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 rounded-xl bg-surface-muted border border-border py-2.5 text-sm font-semibold text-ink"
-            >
-              <Terminal size={16} className="text-brand" />
-              Simulate Bug Triage
-            </a>
+          <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2.5">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenPilotModal();
               }}
-              className="flex items-center justify-center gap-2 rounded-xl bg-brand py-2.5 text-sm font-semibold text-white shadow-sm"
+              className="w-full rounded-full bg-brand-strong py-2.5 text-sm font-semibold text-white shadow-sm text-center"
             >
-              Request Company Pilot
-              <ArrowRight size={16} />
+              Sign up
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSolverModal();
+              }}
+              className="w-full rounded-full border border-border bg-surface py-2.5 text-sm font-medium text-ink text-center hover:bg-surface-muted"
+            >
+              Log in
             </button>
           </div>
         </div>

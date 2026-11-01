@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
 import {
-  Code,
-  Layout,
-  Globe,
-  Sliders,
-  Shield,
-  Layers,
-  ArrowRight,
-  ExternalLink,
-  Sparkles,
   Check,
-  Terminal,
+  ArrowRight,
   Workflow,
   KeyRound,
   FileCode,
@@ -33,7 +24,7 @@ export function ProductSurfaces() {
         'Captures OS, browser version, viewport dimensions, and stack traces automatically',
         'Directly links reports to your company’s deduplication clustering engine',
       ],
-      codePreview: `<!-- Embed FixIT Widget in 30 Seconds -->
+      codePreview: `<!-- Embed Fixit Widget in 30 Seconds -->
 <script
   src="https://fixit.dev/widget.js"
   data-product="acme-web"
@@ -53,7 +44,7 @@ export function ProductSurfaces() {
         'One-click Markdown export formatted specifically for Linear, Jira, and GitHub',
         'Prepaid company escrow balance for funding verified bug bounties',
       ],
-      codePreview: `// FixIT Priority Score Ranking Formula
+      codePreview: `// Fixit Priority Score Ranking Formula
 export function calculatePriorityScore(impact, urgency, effort) {
   const numerator = impact * urgency; // 0 - 10,000
   const normalizedEffort = Math.max(effort, 10);
@@ -130,7 +121,7 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
   const current = surfaces.find((s) => s.id === activeSurface) || surfaces[0];
 
   return (
-    <section id="surfaces" className="py-20 bg-slate-50 border-b border-border">
+    <section id="surfaces" className="py-20 bg-canvas border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
@@ -142,7 +133,7 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
             Five Integrated Surfaces. One Unified Platform.
           </h2>
           <p className="mt-4 text-lg text-ink-muted">
-            FixIT is not just a landing page—it is a full-stack platform featuring 5 specialized interfaces built for companies, solvers, reporters, and operations teams.
+            Fixit is not just a landing page—it is a full-stack platform featuring 5 specialized interfaces built for companies, solvers, reporters, and operations teams.
           </p>
         </div>
 
@@ -156,14 +147,14 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
                 onClick={() => setActiveSurface(s.id)}
                 className={`flex items-center gap-2 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all ${
                   isSelected
-                    ? 'bg-brand text-white shadow-md ring-2 ring-brand/20'
-                    : 'bg-white border border-border text-ink hover:bg-slate-100'
+                    ? 'bg-brand text-slate-950 font-black shadow-md ring-2 ring-brand/20'
+                    : 'bg-surface border border-border text-ink hover:bg-surface-muted'
                 }`}
               >
                 <span>{s.title}</span>
                 <span
                   className={`rounded-full px-2 py-0.2 text-[10px] font-semibold ${
-                    isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-ink-muted'
+                    isSelected ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-surface-muted text-ink-muted'
                   }`}
                 >
                   {s.badge}
@@ -174,12 +165,12 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
         </div>
 
         {/* Surface Showcase Display Card */}
-        <div className="rounded-3xl border border-border bg-white p-6 sm:p-10 shadow-card">
+        <div className="rounded-3xl border border-border bg-surface p-6 sm:p-10 shadow-card">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
             {/* Left Column: Details */}
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="rounded-lg bg-indigo-50 border border-brand/20 px-2.5 py-0.5 text-xs font-bold text-brand font-mono">
+                <span className="rounded-lg bg-brand-soft border border-brand/20 px-2.5 py-0.5 text-xs font-bold text-brand font-mono">
                   {current.route}
                 </span>
                 <span className="rounded-full bg-ok-soft px-2.5 py-0.5 text-xs font-bold text-ok">
@@ -201,7 +192,7 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
 
               <div className="mt-6 space-y-2.5">
                 {current.bullets.map((b, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-muted">
                     <Check size={16} className="mt-0.5 shrink-0 text-ok" />
                     <span>{b}</span>
                   </div>
@@ -211,7 +202,7 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
               <div className="mt-8 pt-5 border-t border-border flex items-center gap-3">
                 <a
                   href="#sandbox"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-xs font-bold text-white hover:bg-brand-strong transition shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-strong px-5 py-2.5 text-xs font-bold text-white hover:opacity-90 transition shadow-sm"
                 >
                   <span>Test in Sandbox Queue</span>
                   <ArrowRight size={14} />
@@ -220,17 +211,17 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
             </div>
 
             {/* Right Column: Code / Architecture Snippet */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-inner">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-xs font-mono text-slate-400">
-                <span className="flex items-center gap-1.5 text-indigo-300">
+            <div className="rounded-2xl border border-border bg-surface-muted p-5 shadow-inner">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-xs font-mono text-ink-muted">
+                <span className="flex items-center gap-1.5 text-brand">
                   <FileCode size={14} />
-                  <span>FixIT Core Implementation Preview</span>
+                  <span>Fixit Core Implementation Preview</span>
                 </span>
-                <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-bold">
+                <span className="text-[10px] bg-surface px-2 py-0.5 rounded text-ok font-bold border border-border">
                   Production Verified
                 </span>
               </div>
-              <pre className="font-mono text-xs text-indigo-200 overflow-x-auto p-3 bg-slate-950/80 rounded-xl leading-relaxed">
+              <pre className="font-mono text-xs text-brand overflow-x-auto p-3 bg-canvas/80 rounded-xl leading-relaxed border border-border">
                 <code>{current.codePreview}</code>
               </pre>
             </div>
@@ -238,9 +229,9 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
         </div>
 
         {/* Live Seeded Preview Environments Callout */}
-        <div className="mt-10 rounded-2xl border border-border bg-gradient-to-r from-indigo-50/60 via-slate-50 to-emerald-50/50 p-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-10 rounded-2xl border border-border bg-surface-muted p-6 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand text-white font-bold">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand text-slate-950 font-bold">
               <KeyRound size={20} />
             </div>
             <div>
@@ -251,13 +242,13 @@ SELECT SUM(amount_cents) FROM ledger_entries WHERE tx_id = 'tx_8891';
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs font-semibold">
-            <span className="rounded-lg bg-white border border-border px-3 py-1.5 text-slate-700 shadow-sm">
+            <span className="rounded-lg bg-surface border border-border px-3 py-1.5 text-ink shadow-sm">
               Role: Owner (Nadia)
             </span>
-            <span className="rounded-lg bg-white border border-border px-3 py-1.5 text-indigo-700 shadow-sm">
+            <span className="rounded-lg bg-surface border border-border px-3 py-1.5 text-brand shadow-sm">
               Role: Expert (Sam)
             </span>
-            <span className="rounded-lg bg-white border border-border px-3 py-1.5 text-emerald-700 shadow-sm">
+            <span className="rounded-lg bg-surface border border-border px-3 py-1.5 text-ok shadow-sm">
               Role: Ops Admin
             </span>
           </div>

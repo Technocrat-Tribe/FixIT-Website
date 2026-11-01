@@ -6,7 +6,7 @@ export function PricingSection({ onOpenPilotModal }) {
   const [annualBilling, setAnnualBilling] = useState(true);
 
   return (
-    <section id="pricing" className="py-20 bg-white border-b border-border">
+    <section id="pricing" className="py-20 bg-canvas border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -22,12 +22,12 @@ export function PricingSection({ onOpenPilotModal }) {
           </p>
 
           {/* Billing Toggle */}
-          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-slate-100 p-1.5 border border-border">
+          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-surface-muted p-1.5 border border-border">
             <button
               onClick={() => setAnnualBilling(false)}
               className={`rounded-xl px-4 py-1.5 text-xs font-bold transition ${
                 !annualBilling
-                  ? 'bg-white text-ink shadow-sm'
+                  ? 'bg-surface text-ink shadow-sm'
                   : 'text-ink-muted hover:text-ink'
               }`}
             >
@@ -37,7 +37,7 @@ export function PricingSection({ onOpenPilotModal }) {
               onClick={() => setAnnualBilling(true)}
               className={`flex items-center gap-1.5 rounded-xl px-4 py-1.5 text-xs font-bold transition ${
                 annualBilling
-                  ? 'bg-brand text-white shadow-sm ring-2 ring-brand/20'
+                  ? 'bg-brand text-slate-950 font-black shadow-sm ring-2 ring-brand/20'
                   : 'text-ink-muted hover:text-ink'
               }`}
             >
@@ -58,12 +58,12 @@ export function PricingSection({ onOpenPilotModal }) {
                 key={tier.name}
                 className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 transition duration-200 ${
                   tier.featured
-                    ? 'border-2 border-brand bg-white shadow-elevated ring-4 ring-brand/10'
-                    : 'border border-border bg-slate-50/60 hover:bg-white hover:shadow-card'
+                    ? 'border-2 border-brand bg-brand-soft/40 shadow-elevated ring-4 ring-brand/10'
+                    : 'border border-border bg-surface hover:bg-surface-muted hover:shadow-card'
                 }`}
               >
                 {tier.featured && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-brand px-3 py-1 text-[11px] font-black uppercase tracking-wider text-white shadow-sm">
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-brand-strong px-3 py-1 text-[11px] font-black uppercase tracking-wider text-white shadow-sm">
                     Most Popular
                   </span>
                 )}
@@ -71,7 +71,7 @@ export function PricingSection({ onOpenPilotModal }) {
                 <div>
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-bold text-ink">{tier.name}</h3>
-                    <span className="rounded-md bg-white border border-border px-2 py-0.5 text-[11px] font-semibold text-ink-muted">
+                    <span className="rounded-md bg-surface-muted border border-border px-2 py-0.5 text-[11px] font-semibold text-ink-muted">
                       {tier.products}
                     </span>
                   </div>
@@ -95,19 +95,19 @@ export function PricingSection({ onOpenPilotModal }) {
                     {tier.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2">
                         <Check size={16} className="mt-0.5 shrink-0 text-ok" />
-                        <span className="text-slate-700 font-medium">{feat}</span>
+                        <span className="text-ink font-medium">{feat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-8 pt-4">
+                <div className="mt-8 pt-5 border-t border-border">
                   <button
                     onClick={onOpenPilotModal}
-                    className={`w-full flex items-center justify-center gap-1.5 rounded-xl py-2.5 px-4 text-xs font-bold transition shadow-sm ${
+                    className={`w-full flex items-center justify-center gap-2 rounded-2xl py-3 text-xs font-bold transition shadow-sm ${
                       tier.featured
-                        ? 'bg-brand text-white hover:bg-brand-strong ring-2 ring-brand/20'
-                        : 'bg-white border border-border text-ink hover:bg-slate-100'
+                        ? 'bg-brand-strong text-white hover:opacity-90'
+                        : 'bg-surface-muted border border-border text-ink hover:bg-surface'
                     }`}
                   >
                     <span>{tier.cta}</span>
@@ -120,7 +120,7 @@ export function PricingSection({ onOpenPilotModal }) {
         </div>
 
         {/* Escrow Disclaimer Box */}
-        <div className="rounded-2xl bg-indigo-50/70 border border-indigo-100 p-5 text-center max-w-3xl mx-auto mb-16 text-xs text-ink-muted">
+        <div className="rounded-2xl bg-brand-soft border border-brand/20 p-5 text-center max-w-3xl mx-auto mb-16 text-xs text-ink-muted">
           <p className="font-semibold text-ink">
             💡 <b>How Bounties Work:</b> Bounties are paid per fix and are funded separately from subscription tiers.
           </p>
@@ -135,9 +135,9 @@ export function PricingSection({ onOpenPilotModal }) {
             Detailed Feature Comparison
           </h3>
 
-          <div className="overflow-x-auto rounded-3xl border border-border bg-white shadow-card">
+          <div className="overflow-x-auto rounded-3xl border border-border bg-surface shadow-card">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 border-b border-border">
+              <thead className="bg-surface-muted border-b border-border">
                 <tr>
                   <th className="px-6 py-4 font-bold text-ink">Capability / Feature</th>
                   <th className="px-4 py-4 font-bold text-center text-ink">Free</th>
@@ -148,7 +148,7 @@ export function PricingSection({ onOpenPilotModal }) {
               </thead>
               <tbody className="divide-y divide-border">
                 {COMPARISON_ROWS.map((row) => (
-                  <tr key={row.label} className="hover:bg-slate-50/70 transition-colors">
+                  <tr key={row.label} className="hover:bg-surface-muted/60 transition-colors">
                     <td className="px-6 py-3.5 font-medium text-ink">{row.label}</td>
                     {row.values.map((val, idx) => (
                       <td
@@ -161,10 +161,10 @@ export function PricingSection({ onOpenPilotModal }) {
                           val ? (
                             <Check size={16} className="mx-auto text-ok" />
                           ) : (
-                            <Minus size={16} className="mx-auto text-slate-300" />
+                            <Minus size={16} className="mx-auto text-ink-muted/50" />
                           )
                         ) : (
-                          <span className="font-semibold text-slate-700">{val}</span>
+                          <span className="font-semibold text-ink">{val}</span>
                         )}
                       </td>
                     ))}

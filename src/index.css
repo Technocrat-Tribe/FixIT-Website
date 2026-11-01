@@ -1,24 +1,30 @@
 :root {
-  --color-brand: #4f46e5;
-  --color-brand-strong: #4338ca;
-  --color-brand-soft: #eef2ff;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f8fafc;
-  --color-canvas: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-ink: #0f172a;
-  --color-ink-muted: #64748b;
-  --color-ok: #059669;
-  --color-ok-soft: #ecfdf5;
-  --color-warn: #d97706;
-  --color-warn-soft: #fffbeb;
-  --color-danger: #dc2626;
-  --color-danger-soft: #fef2f2;
-  --color-info: #0284c7;
-  --color-info-soft: #f0f9ff;
+  --color-brand: #a5b4fc;
+  --color-brand-strong: #4f46e5;
+  --color-brand-soft: #1e1b4b;
+  --color-surface: #111827;
+  --color-surface-muted: #1f2937;
+  --color-canvas: #0b1120;
+  --color-border: #334155;
+  --color-ink: #f1f5f9;
+  --color-ink-muted: #a3b1c6;
+  --color-ok: #34d399;
+  --color-ok-soft: #052e22;
+  --color-warn: #fbbf24;
+  --color-warn-soft: #2d1f04;
+  --color-danger: #f87171;
+  --color-danger-soft: #2d0a0a;
+  --color-info: #38bdf8;
+  --color-info-soft: #082236;
 }
 
-/* Animations adapted from FixIT client engine */
+html, body {
+  background-color: #0b1120;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* Animations adapted from Fixit client engine */
 @keyframes fx-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-7px); }
@@ -41,11 +47,6 @@
 @keyframes fx-grow {
   from { transform: scaleY(0); }
   to { transform: scaleY(1); }
-}
-
-@keyframes fx-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 
 .fx-float {
@@ -71,42 +72,31 @@
   animation: fx-grow 0.9s ease-out both;
 }
 
-/* SVG Fill and Stroke token bindings */
-.fill-brand { fill: #4f46e5; }
-.fill-brand-soft { fill: #eef2ff; }
-.stroke-brand { stroke: #4f46e5; }
-.fill-surface { fill: #ffffff; }
-.fill-surface-muted { fill: #f8fafc; }
-.stroke-surface { stroke: #ffffff; }
-.stroke-border { stroke: #e2e8f0; }
-.fill-ink { fill: #0f172a; }
-.fill-ink-muted { fill: #64748b; }
-.fill-ok { fill: #059669; }
-.fill-ok-soft { fill: #ecfdf5; }
-.stroke-ok { stroke: #059669; }
-.fill-warn { fill: #d97706; }
-.fill-warn-soft { fill: #fffbeb; }
-.stroke-warn { stroke: #d97706; }
-.fill-danger { fill: #dc2626; }
-.fill-danger-soft { fill: #fef2f2; }
-.stroke-danger { stroke: #dc2626; }
-.fill-info { fill: #0284c7; }
-.fill-info-soft { fill: #f0f9ff; }
-.stroke-info { stroke: #0284c7; }
-
-/* Custom utility highlights */
-.bg-radial-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.08) 0%, rgba(14, 165, 233, 0.04) 50%, transparent 75%);
-}
-
-.shimmer-badge {
-  background: linear-gradient(90deg, rgba(238, 242, 255, 0.8) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(238, 242, 255, 0.8) 100%);
-  background-size: 200% 100%;
-  animation: fx-shimmer 3s infinite linear;
-}
+/* SVG Fill and Stroke tokens for Dark Theme */
+.fill-brand { fill: #a5b4fc; }
+.fill-brand-soft { fill: #1e1b4b; }
+.stroke-brand { stroke: #a5b4fc; }
+.fill-surface { fill: #111827; }
+.fill-surface-muted { fill: #1f2937; }
+.stroke-surface { stroke: #111827; }
+.stroke-border { stroke: #334155; }
+.fill-ink { fill: #f1f5f9; }
+.fill-ink-muted { fill: #a3b1c6; }
+.fill-ok { fill: #34d399; }
+.fill-ok-soft { fill: #052e22; }
+.stroke-ok { stroke: #34d399; }
+.fill-warn { fill: #fbbf24; }
+.fill-warn-soft { fill: #2d1f04; }
+.stroke-warn { stroke: #fbbf24; }
+.fill-danger { fill: #f87171; }
+.fill-danger-soft { fill: #2d0a0a; }
+.stroke-danger { stroke: #f87171; }
+.fill-info { fill: #38bdf8; }
+.fill-info-soft { fill: #082236; }
+.stroke-info { stroke: #38bdf8; }
 
 @media (prefers-reduced-motion: reduce) {
-  .fx-float, .fx-dash, .fx-pulse, .fx-rise, .fx-grow, .shimmer-badge {
+  .fx-float, .fx-dash, .fx-pulse, .fx-rise, .fx-grow {
     animation: none !important;
   }
 }

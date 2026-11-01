@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero, ProofStrip } from './components/Hero';
+import { HowItWorks, BeforeAfter, CtaBand } from './components/Walkthrough';
 import { PersonaTabs } from './components/PersonaTabs';
 import { ProductSurfaces } from './components/ProductSurfaces';
 import { EscrowCalculator } from './components/EscrowCalculator';
@@ -15,46 +16,62 @@ export default function App() {
   const [solverModalOpen, setSolverModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-ink font-sans selection:bg-brand-soft selection:text-brand">
-      {/* Navigation */}
-      <Navbar onOpenPilotModal={() => setPilotModalOpen(true)} />
+    <div className="min-h-screen flex flex-col bg-canvas text-ink font-sans selection:bg-brand-soft selection:text-brand">
+      {/* Navigation matching product header */}
+      <Navbar
+        onOpenPilotModal={() => setPilotModalOpen(true)}
+        onOpenSolverModal={() => setSolverModalOpen(true)}
+      />
 
-      {/* Hero Section */}
+      {/* Main Content */}
       <main className="flex-1">
+        {/* 1. Hero Section */}
         <Hero
           onOpenPilotModal={() => setPilotModalOpen(true)}
           onOpenSolverModal={() => setSolverModalOpen(true)}
         />
 
-        {/* Verifiable Engineering Metrics Proof Strip */}
+        {/* 2. Verifiable Engineering Metrics & Live Product Strip */}
         <ProofStrip />
 
-        {/* Three-Sided Persona Switcher */}
+        {/* 3. Walkthrough: From "this is broken" to fixed, in four steps */}
+        <HowItWorks />
+
+        {/* 4. Three-Sided Persona Switcher (Companies, Solvers, Reporters) */}
         <PersonaTabs
           onOpenPilotModal={() => setPilotModalOpen(true)}
           onOpenSolverModal={() => setSolverModalOpen(true)}
         />
 
-        {/* 5 Integrated Product Surfaces */}
+        {/* 5. The 5 Integrated Product Surfaces */}
         <ProductSurfaces />
 
-        {/* Interactive Escrow Split & ROI Calculator */}
-        <EscrowCalculator />
-
-        {/* Interactive Bug Triage & Deduplication Sandbox */}
+        {/* 6. Interactive Acme Cloud Bug Triage & Deduplication Sandbox */}
         <TriageSandbox />
 
-        {/* Pricing Grid & Tier Comparison */}
+        {/* 7. Review vs Fixit Report Comparison */}
+        <BeforeAfter />
+
+        {/* 8. Interactive Escrow Split & ROI Calculator */}
+        <EscrowCalculator />
+
+        {/* 9. Pricing Grid & Tier Comparison */}
         <PricingSection onOpenPilotModal={() => setPilotModalOpen(true)} />
 
-        {/* Technical Architecture & Trust */}
+        {/* 10. Technical Architecture & Trust Invariants */}
         <ArchitectureSection />
+
+        {/* 11. Final Call-to-Action Band */}
+        <CtaBand
+          onOpenPilotModal={() => setPilotModalOpen(true)}
+          onOpenSolverModal={() => setSolverModalOpen(true)}
+        />
       </main>
 
-      {/* Footer with Attribution and External Links */}
+      {/* 12. Footer with Harshit Agarwal Portfolio Attribution */}
       <Footer />
 
-      {/* Global Lead Capture Modals */}
+      {/* Global Lead Capture & Simulation Modals */}
       <PilotModal
         isOpen={pilotModalOpen}
         onClose={() => setPilotModalOpen(false)}
