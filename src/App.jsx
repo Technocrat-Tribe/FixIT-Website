@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero, ProofStrip } from './components/Hero';
 import { PersonaTabs } from './components/PersonaTabs';
+import { ProductSurfaces } from './components/ProductSurfaces';
 import { EscrowCalculator } from './components/EscrowCalculator';
 import { TriageSandbox } from './components/TriageSandbox';
 import { PricingSection } from './components/PricingSection';
@@ -33,6 +34,9 @@ export default function App() {
           onOpenPilotModal={() => setPilotModalOpen(true)}
           onOpenSolverModal={() => setSolverModalOpen(true)}
         />
+
+        {/* 5 Integrated Product Surfaces */}
+        <ProductSurfaces />
 
         {/* Interactive Escrow Split & ROI Calculator */}
         <EscrowCalculator />

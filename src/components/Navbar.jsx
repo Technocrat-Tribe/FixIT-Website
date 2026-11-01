@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Menu, X, Github, ArrowRight, Sparkles, Shield, Terminal } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, Shield, Terminal } from 'lucide-react';
 
 export function Navbar({ onOpenPilotModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: 'Personas', href: '#personas' },
+    { name: 'Surfaces', href: '#surfaces' },
     { name: 'ROI Calculator', href: '#calculator' },
     { name: 'Triage Sandbox', href: '#sandbox' },
     { name: 'Pricing', href: '#pricing' },
@@ -15,7 +16,7 @@ export function Navbar({ onOpenPilotModal }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/80 bg-surface/90 backdrop-blur-md transition-all">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand & Badge */}
+        {/* Brand */}
         <div className="flex items-center gap-3">
           <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight text-ink hover:opacity-90 transition">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white shadow-sm ring-2 ring-brand/20">
@@ -23,10 +24,6 @@ export function Navbar({ onOpenPilotModal }) {
             </span>
             <span>FixIT</span>
           </a>
-          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-soft px-2.5 py-0.5 text-xs font-semibold text-brand">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-            B2B SaaS Startup
-          </span>
         </div>
 
         {/* Desktop Navigation Links */}
@@ -44,16 +41,6 @@ export function Navbar({ onOpenPilotModal }) {
 
         {/* Action CTAs */}
         <div className="hidden sm:flex items-center gap-3">
-          <a
-            href="https://github.com/Technocrat-Tribe/FixIT"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 rounded-xl border border-border bg-surface px-3 py-2 text-xs font-semibold text-ink hover:bg-surface-muted hover:border-ink/20 transition shadow-sm"
-          >
-            <Github size={15} />
-            <span>Technocrat-Tribe/FixIT</span>
-          </a>
-
           <a
             href="#sandbox"
             className="inline-flex items-center gap-1.5 rounded-xl bg-surface-muted border border-border px-3.5 py-2 text-xs font-semibold text-ink hover:bg-slate-200 transition shadow-sm"
@@ -124,15 +111,6 @@ export function Navbar({ onOpenPilotModal }) {
               Request Company Pilot
               <ArrowRight size={16} />
             </button>
-            <a
-              href="https://github.com/Technocrat-Tribe/FixIT"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-border py-2 text-xs font-medium text-ink-muted"
-            >
-              <Github size={15} />
-              View Monorepo on GitHub
-            </a>
           </div>
         </div>
       )}
