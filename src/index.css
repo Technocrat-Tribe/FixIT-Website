@@ -1,0 +1,112 @@
+:root {
+  --color-brand: #4f46e5;
+  --color-brand-strong: #4338ca;
+  --color-brand-soft: #eef2ff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-canvas: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+  --color-ok: #059669;
+  --color-ok-soft: #ecfdf5;
+  --color-warn: #d97706;
+  --color-warn-soft: #fffbeb;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fef2f2;
+  --color-info: #0284c7;
+  --color-info-soft: #f0f9ff;
+}
+
+/* Animations adapted from FixIT client engine */
+@keyframes fx-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes fx-dash {
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes fx-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes fx-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fx-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes fx-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fx-float {
+  animation: fx-float 5s ease-in-out infinite;
+}
+
+.fx-dash {
+  stroke-dasharray: 6 6;
+  animation: fx-dash 1.6s linear infinite;
+}
+
+.fx-pulse {
+  animation: fx-pulse 2.4s ease-in-out infinite;
+}
+
+.fx-rise {
+  animation: fx-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fx-grow {
+  transform-origin: bottom;
+  transform-box: fill-box;
+  animation: fx-grow 0.9s ease-out both;
+}
+
+/* SVG Fill and Stroke token bindings */
+.fill-brand { fill: #4f46e5; }
+.fill-brand-soft { fill: #eef2ff; }
+.stroke-brand { stroke: #4f46e5; }
+.fill-surface { fill: #ffffff; }
+.fill-surface-muted { fill: #f8fafc; }
+.stroke-surface { stroke: #ffffff; }
+.stroke-border { stroke: #e2e8f0; }
+.fill-ink { fill: #0f172a; }
+.fill-ink-muted { fill: #64748b; }
+.fill-ok { fill: #059669; }
+.fill-ok-soft { fill: #ecfdf5; }
+.stroke-ok { stroke: #059669; }
+.fill-warn { fill: #d97706; }
+.fill-warn-soft { fill: #fffbeb; }
+.stroke-warn { stroke: #d97706; }
+.fill-danger { fill: #dc2626; }
+.fill-danger-soft { fill: #fef2f2; }
+.stroke-danger { stroke: #dc2626; }
+.fill-info { fill: #0284c7; }
+.fill-info-soft { fill: #f0f9ff; }
+.stroke-info { stroke: #0284c7; }
+
+/* Custom utility highlights */
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.08) 0%, rgba(14, 165, 233, 0.04) 50%, transparent 75%);
+}
+
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(238, 242, 255, 0.8) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(238, 242, 255, 0.8) 100%);
+  background-size: 200% 100%;
+  animation: fx-shimmer 3s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-float, .fx-dash, .fx-pulse, .fx-rise, .fx-grow, .shimmer-badge {
+    animation: none !important;
+  }
+}
